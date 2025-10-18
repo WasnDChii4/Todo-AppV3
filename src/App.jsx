@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div className="hero min-h-screen" style={{backgroundImage: `url(${BackgroundCSM})`}}>
       <div className="hero-overlay backdrop-blur-sm" />
-      <img src={LogoCSMRezeArc} alt="Logo CSM Reze Arc" className="z-10" />
+      <img src={LogoCSMRezeArc} alt="Logo CSM Reze Arc" className="z-10 w-5xl" />
       <div className="w-11/12 z-10">
         <Todo />
       </div>

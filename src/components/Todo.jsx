@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import {FaPlus, FaTrash, FaCheck} from 'react-icons/fa';
-import LogoCSMRezeArc from "../assets/LogoCSMRezeArc.png";
 
 export default function Todo() {
+  const [todos, setTodos] = useState([
+    {id: '1', text: 'Learning Todo App V3', time: '08:00', date: '18/10/2025', completed: false}
+  ])
+  const [newTodo, setNewTodo] = useState('')
+
+  const addTodo = () => {
+    if(newTodo.trim() == '')
+    return;
+    const currentDate = new Date
+    const timeString = currentDate.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})
+    const dateString = currentDate.toLocaleDateString();
+
+    setTodos ([
+      {
+        text: newTodo,
+        id: Date.now(),
+        time: timeString,
+        date: dateString,
+        completed: false
+      },
+      ...todos
+    ])
+    setNewTodo('')
+  }
+
   return (
     <div className="bg-black/60 text-white place-self-center w-11/12 max-w-md flex flex-col p-3 md:p-7 rounded-xl backdrop-blur-sm border border-black/20 shadow-lg shadow-gray">
       <div className="bg-gradient-to-r from-red-700/80 to-zinc-900/80 p-4 rounded-xl backdrop-blur-lg mb-6">
