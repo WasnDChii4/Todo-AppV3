@@ -60,18 +60,19 @@ export default function Todo() {
             <div key={todo.id} className="p-4 rounded-xl bg-neutral-100/80 backdrop-blur-xl border border-black/30">
               <div className="flex justify-between items-start">
                 <div className="flex items-start space-x-3">
-                  <button className={`${todo.completed ? 'bg-red-700' : 'bg-zinc-900'} mt-1 p-2 rounded-md backdrop-blur-sm border border-black/30 transition`} onClick={() => completedTodo(todo.id)}>
+                  <button className={`${todo.completed ? 'bg-red-700' : 'bg-zinc-900'} mt-1 p-2 rounded-md backdrop-blur-sm border border-black/30 transition duration-200`} onClick={() => completedTodo(todo.id)}>
                     {todo.completed && <FaCheck size={12} />}
                   </button>
                   <div>
-                    <p className={`font-medium ${todo.completed ? 'line-through text-red-700' : 'text-zinc-900'} font-chicle text-2xl transition`}>
+                    <p className={`font-medium ${todo.completed ? 'line-through text-red-700' : 'text-zinc-900'} font-chicle text-2xl transition duration-200`}>
                       {todo.text}
                     </p>
                     <p className="text-xs text-red-700/80 mt-1">{todo.time} | {todo.date}</p>
                   </div>
                 </div>
-                <button className="bg-red-700 backdrop-blur-sm border-rose-900/30 transition p-2 rounded-lg" onClick={() => deleteTodo(todo.id)}>
-                  <FaBomb />
+                <button className="relative flex items-center justify-center w-9 h-9 bg-red-700 backdrop-blur-sm border-rose-900/30 transition p-2 rounded-lg group" onClick={() => deleteTodo(todo.id)}>
+                  <FaBomb className="absolute inset-0 m-auto opacity-100 group-hover:opacity-0 transition duration-200" />
+                  <FaExplosion className="absolute inset-0 m-auto opacity-0 group-hover:opacity-100 transition duration-200" />
                 </button>
               </div>
             </div>
